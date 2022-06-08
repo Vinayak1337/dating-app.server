@@ -1,0 +1,1713 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dating APP API Documentation",
+        "description": "API documentation for Dating App admin panel, App & website",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "contact": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "email": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "phoneNumber": {
+                        "type": "number",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "message": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "subject": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    }
+                }
+            },
+            "config": {
+                "properties": {
+                    "gst": {
+                        "type": "number"
+                    },
+                    "socialMedia": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "facebook": {
+                                    "type": "string"
+                                },
+                                "twitter": {
+                                    "type": "string"
+                                },
+                                "instagram": {
+                                    "type": "string"
+                                },
+                                "linkedin": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "address": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "company": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "pincode": {
+                                    "type": "string"
+                                },
+                                "website": {
+                                    "type": "string"
+                                },
+                                "contact": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "logo": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "Headerlogo": {
+                                    "type": "string"
+                                },
+                                "Footerlogo": {
+                                    "type": "string"
+                                },
+                                "Adminlogo": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "error": {
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "reason": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "object",
+                        "default": {}
+                    }
+                }
+            },
+            "product": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "tax": {
+                        "type": "string",
+                        "$ref": "#components/schemas/tax"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "tax": {
+                "properties": {
+                    "name": {
+                        "type": "number"
+                    },
+                    "tax": {
+                        "type": "number"
+                    }
+                }
+            },
+            "users": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ],
+                        "uniqueItems": true
+                    },
+                    "mobile": {
+                        "type": "number",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "address": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "required": [
+                            "true"
+                        ]
+                    },
+                    "username": {
+                        "type": "string",
+                        "uniqueItems": true
+                    },
+                    "bannerImage": {
+                        "type": "string",
+                        "default": "https://sgp1.digitaloceanspaces.com/storage.tellytell.com/banner-default.png"
+                    },
+                    "newsLetterSignUp": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "date": {
+                                "type": "number",
+                                "default": "number"
+                            }
+                        }
+                    },
+                    "categories": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "$ref": "#components/schemas/category"
+                        }
+                    },
+                    "active": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "category": {
+                "properties": {
+                    "category": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                }
+            },
+            "featured": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                }
+            },
+            "coupon": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "required": [
+                            "true",
+                            "A coupon must have a name"
+                        ],
+                        "uniqueItems": true
+                    },
+                    "couponCode": {
+                        "type": "string",
+                        "required": [
+                            "true",
+                            "A coupon must have a coupon code"
+                        ],
+                        "uniqueItems": true
+                    },
+                    "offPercent": {
+                        "type": "number",
+                        "required": [
+                            "true",
+                            "Coupon must have percentage off"
+                        ]
+                    },
+                    "amountOff": {
+                        "type": "number"
+                    },
+                    "shipping": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "appliesTo": {
+                        "type": "string",
+                        "enum": [
+                            "any order",
+                            "order over",
+                            "single",
+                            "product",
+                            "product by category"
+                        ]
+                    },
+                    "limitUser": {
+                        "type": "string",
+                        "enum": [
+                            "unlimited",
+                            "limited"
+                        ]
+                    },
+                    "customerLimit": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "startDate": {
+                        "type": "number",
+                        "required": [
+                            "true",
+                            "Coupon must have a start date"
+                        ]
+                    },
+                    "endDate": {
+                        "type": "number"
+                    },
+                    "expires": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                }
+            },
+            "order": {
+                "properties": {
+                    "user": {
+                        "type": "string",
+                        "$ref": "#components/schemas/user"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "company": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "appartment": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "pinCode": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "orderNote": {
+                        "type": "string"
+                    },
+                    "product": {
+                        "type": "array",
+                        "default": []
+                    },
+                    "Amount": {
+                        "type": "number"
+                    },
+                    "totalQuantity": {
+                        "type": "string"
+                    },
+                    "payment": {
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "status": {
+                        "type": "string",
+                        "default": "new"
+                    }
+                }
+            },
+            "page": {
+                "properties": {
+                    "content": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                }
+            },
+            "user": {
+                "description": "Its a dummy user",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "404": {
+                "description": "Resource was not found",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#components/schemas/error"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Unknown error occurred while handling the request",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#components/schemas/error"
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "Provided credentials were incorrect",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#components/schemas/error"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Provided parameters or body were invalid",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#components/schemas/error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Config",
+            "description": "Get all the configuration"
+        },
+        {
+            "name": "Products",
+            "description": "Get the products information"
+        },
+        {
+            "name": "Categories",
+            "description": "Get the categories information"
+        },
+        {
+            "name": "Featured Products",
+            "description": "Get all the featured products"
+        },
+        {
+            "name": "Coupons",
+            "description": "Get all the active coupons"
+        },
+        {
+            "name": "Orders",
+            "description": "Get the order details"
+        },
+        {
+            "name": "Pages",
+            "description": "Get the pages and the contents"
+        },
+        {
+            "name": "Contact",
+            "description": "Access contact routes"
+        }
+    ],
+    "paths": {
+        "/api/config": {
+            "get": {
+                "tags": [
+                    "Config"
+                ],
+                "summary": "Returns full configuration of the website",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#components/schemas/config"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/config/logo": {
+            "get": {
+                "summary": "Returns logos for the website",
+                "description": "Logos for the website",
+                "tags": [
+                    "Config"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Adminlogo": {
+                                            "type": "string"
+                                        },
+                                        "Headerlogo": {
+                                            "type": "string"
+                                        },
+                                        "Footerlogo": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/product": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Returns products with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalProducts": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/product"
+                                            }
+                                        },
+                                        "pageResult": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalProducts": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/product"
+                                            }
+                                        },
+                                        "pageResult": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "status",
+                        "required": false,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalProducts": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/product"
+                                            }
+                                        },
+                                        "pageResult": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalProducts": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/product"
+                                            }
+                                        },
+                                        "pageResult": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/product/all": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Returns all products",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#components/schemas/product"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/product/new": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Returns latest added 8 products",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#components/schemas/product"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/product/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Returns a single product by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "$ref": "#components/schemas/product"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/product"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/category": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Returns all categories",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#components/schemas/category"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/category/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Returns a single category by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "$ref": "#components/schemas/category"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/category"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/featured": {
+            "get": {
+                "tags": [
+                    "Featured Products"
+                ],
+                "summary": "Returns all the featured products",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#components/schemas/featured"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/featured/{id}": {
+            "get": {
+                "tags": [
+                    "Featured Products"
+                ],
+                "summary": "Returns a single featured product by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "$ref": "#components/schemas/featured"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/featured"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/coupon": {
+            "get": {
+                "tags": [
+                    "Coupons"
+                ],
+                "summary": "Returns all the coupons",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#components/schemas/coupon"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/coupon/{id}": {
+            "get": {
+                "tags": [
+                    "Coupons"
+                ],
+                "summary": "Returns a single coupon by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "$ref": "#components/schemas/coupon"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/coupon"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Returns orders with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order/processing": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Returns processing orders with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order/dispatched": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Returns dispatched orders with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order/delivered": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Returns delivered orders with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order/cancelled": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Returns cancelled orders with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order/returned": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Returns returned orders with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/order"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/order/{id}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Returns a single order by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "$ref": "#components/schemas/order"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/order"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/page/view-page": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Returns pages with page number & limit",
+                "description": "Note: Limit must be same in all requests",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/page"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/page"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "totalRecords": {
+                                            "type": "number"
+                                        },
+                                        "orders": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#components/schemas/page"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/api/page/view-page/{id}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Returns a single page by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "$ref": "#components/schemas/page"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/page"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        },
+        "/contact": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Send a contact request to the admin.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#components/schemas/contact"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/contact"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#components/responses/400"
+                    },
+                    "500": {
+                        "$ref": "#components/responses/500"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,4 @@
+node_modules/
+schema-notes*
+**/temp.js*
+test
