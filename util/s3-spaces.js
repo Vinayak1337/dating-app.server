@@ -5,7 +5,7 @@ import md5 from 'md5';
 import { SECRETS } from './config';
 
 const spacesEndpoint = new AWS.Endpoint(SECRETS.spacesEndpoint);
-console.log(spacesEndpoint);
+
 const s3 = new AWS.S3({
 	endpoint: spacesEndpoint,
 	accessKeyId: SECRETS.spacesAcessKey,
