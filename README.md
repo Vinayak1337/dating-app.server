@@ -2,7 +2,7 @@
 
 This repository hosts the backend server for the Dating App, a RESTful API designed to support the [Dating App Admin Site](https://dating-app-admin-site.netlify.app/).
 
-The codebase follows a feature-centric pattern, where each feature has its dedicated model, router, and controller. Additionally, a socket server is integrated at the path `/socket`, implemented using Object-Oriented Programming (OOP) principles.
+The codebase follows a feature-centric pattern, where each feature has its dedicated model, router, and controller. Additionally, a socket server is integrated at the path `/socket` for dating app, implemented using Object-Oriented Programming (OOP) principles.
 
 ## Documentation
 
