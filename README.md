@@ -4,7 +4,7 @@ This repository hosts the backend server for the Dating App, a RESTful API desig
 
 The codebase follows a feature-centric pattern, where each feature has its dedicated model, router, and controller. Additionally, a socket server is integrated at the path `/socket` for dating app, implemented using Object-Oriented Programming (OOP) principles.
 
-Written in JavaScript, utilizing technologies such as Express.js for creating RESTful APIs, Mongoose/Mongodb, multer & S3 for storing data & images, bcrypt & jwt for encrypting password & creating session token, among others.
+Written in JavaScript, utilizing technologies such as Express.js for creating RESTful APIs, Mongoose/Mongodb, multer & S3 for storing data & images, bcrypt & jwt for encrypting password & creating session token and socket.io for socket server, among others.
 
 ## Documentation
 
